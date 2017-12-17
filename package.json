@@ -13,6 +13,7 @@
     "test": "mocha tests --recursive"
   },
   "dependencies": {
+    "coffeescript": "^2.1.0",
     "requireindex": "~1.1.0"
   },
   "devDependencies": {
