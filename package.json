@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-coffeescript",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Transpile coffee files before eslint checks will be run",
   "main": "lib/index.js",
   "keywords": [
