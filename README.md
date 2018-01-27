@@ -1,6 +1,7 @@
 # eslint-plugin-coffeescript
 
-Transpile coffee files before eslint checks will be run
+Transpiles .coffee and .cjsx files before with coffeescript, then runs eslint checks on them.
+The plugin ignores some rules that are impossible to satisfy from coffeescript (see [this file](lib/index.js#L22))
 
 ## Installation
 
@@ -22,11 +23,23 @@ $ npm install eslint-plugin-coffeescript --save-dev
 
 Add `coffeescript` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
-```json
+```yaml
 {
     "plugins": [
-        "coffeescript"
+        "coffeescript", # ...
     ]
+}
+```
+
+To have imports resolve properly with the `eslint-plugins-imports` module, you must set this plugin to wrap your default parser:
+```yaml
+{
+  "parser": "eslint-plugin-coffeescript",
+  "parserOptions": { 
+    "parser": "babel-eslint", # original parser goes here (you must specify one to use this option).
+    "sourceType": "module", # any original parser config options you had.
+    "ecmaVersion": 6
+  }
 }
 ```
 
