@@ -10,7 +10,7 @@
   ],
   "author": "alex <alex@rocketguys.com>",
   "scripts": {
-    "test": "mocha tests --recursive"
+    "test": "ava"
   },
   "dependencies": {
     "coffeescript": "^2.1.1",
@@ -18,8 +18,8 @@
     "source-map": "^0.6.1"
   },
   "devDependencies": {
-    "eslint": "~3.9.1",
-    "mocha": "^3.1.2"
+    "ava": "^0.25.0",
+    "eslint": "~3.9.1"
   },
   "repository": "git@github.com:a-x-/eslint-plugin-coffeescript.git",
   "engines": {
