@@ -12,7 +12,7 @@ const SourceMap = require('source-map');
 //------------------------------------------------------------------------------
 const arrayToObject = (arr) =>
   Object.assign({}, ...arr.map(item => ({
-        [Array.isArray(item) && item[0] || item]: 
+        [Array.isArray(item) && item[0] || item]:
           Array.isArray(item) && item[1] || item })))
 
 const coffeeCache = {};
@@ -82,7 +82,7 @@ module.exports.parse = function parse(content, options) {
   if (options.filePath.match(coffeeRegex)) {
     content = preprocess(content, options.filePath)[0]
   }
-``
+
   // file is coffeescript at this point
   return realParser.parse(content, options)
 }
@@ -104,7 +104,7 @@ function preprocess (content, filename) {
     content = results.js
   }
 
-  return [content]; 
+  return [content];
 }
 
 function postprocess (messages, filename) {
@@ -119,7 +119,7 @@ function postprocess (messages, filename) {
       if (start.column !== null) start.column += 1;
       if (end.column !== null) end.column += 1;
       return {
-        ...m, 
+        ...m,
         ...{
           line:start.line,
           column: start.column,
@@ -130,7 +130,7 @@ function postprocess (messages, filename) {
     })
     .filter(m => {
       if (
-          (unfixableRules[m.ruleId] && 
+          (unfixableRules[m.ruleId] &&
             (typeof unfixableRules[m.ruleId] !== 'function' || unfixableRules[m.ruleId](m)))  ||
           m.line == null
         ) {
