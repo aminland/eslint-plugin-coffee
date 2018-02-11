@@ -1,12 +1,16 @@
 {
   "extends": "eslint:recommended",
-  "parser": "../src/index.js",
+  "parser": "eslint-plugin-coffeescript",
   "parserOptions": { // original parser config goes here
     "parser": "babel-eslint",
     "sourceType": "module",
-    "ecmaVersion": 8
+    "ecmaVersion": 8,
+    "coffeeExtensions": ['.cjsx', '.coffeescript', '.coffee']
   },
   "env": {
     "node": true,
-  }
+  },
+  plugins: [
+    "eslint-plugin-coffeescript"
+  ]
 }

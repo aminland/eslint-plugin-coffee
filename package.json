@@ -10,8 +10,8 @@
   ],
   "author": "alex <alex@rocketguys.com>",
   "scripts": {
-    "test": "ava tests/index.js",
-    "build": "node_modules/.bin/babel --out-dir=dist src",
+    "test": "node --experimental-modules ./vowsrunner.js test/test_*.coffee --spec",
+    "build": "node_modules/.bin/coffee --bare --no-header -t -o dist src",
     "prepare": "npm run build"
   },
   "dependencies": {
@@ -20,14 +20,15 @@
     "source-map": "^0.6.1"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
     "babel-cli": "^6.6.5",
-    "babel-core": "^6.7.6",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^3.9.1"
+    "babel-register": "^6.26.0",
+    "eslint": "^3.9.1",
+    "vows": "^0.8.1"
   },
   "repository": "git@github.com:a-x-/eslint-plugin-coffeescript.git",
   "engines": {
