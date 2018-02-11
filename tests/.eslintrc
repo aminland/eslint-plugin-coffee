@@ -1,0 +1,12 @@
+{
+  "extends": "eslint:recommended",
+  "parser": "../src/index.js",
+  "parserOptions": { // original parser config goes here
+    "parser": "babel-eslint",
+    "sourceType": "module",
+    "ecmaVersion": 8
+  },
+  "env": {
+    "node": true,
+  }
+}
