@@ -5,22 +5,22 @@ assert = require 'assert'
 coffeePlugin = require(path.resolve(__dirname, '../dist'))
 CLIEngine = require('eslint').CLIEngine
 cli = new CLIEngine {
-	"extends": "eslint:recommended",
-	"parser": path.resolve(__dirname, '../dist'),
-	"parserOptions": { # original parser config goes here
-		"parser": "babel-eslint",
-		"sourceType": "module",
-		"ecmaVersion": 8,
-		"coffeeExtensions": ['.cjsx', '.coffeescript', '.coffee']
+
+	'parser': path.resolve(__dirname, '../dist'),
+	'parserOptions': { # original parser config goes here
+		'parser': 'babel-eslint',
+		'sourceType': 'module',
+		'ecmaVersion': 8,
+		'coffeeExtensions': ['.cjsx', '.coffeescript', '.coffee']
 	},
-	"env": {
-		"node": true,
+	'env': {
+		'node': true,
 	},
 	settings: {
-		"coffee-extensions": ['.cjsx', '.coffeescript', '.coffee']
+		'coffee-extensions': ['.cjsx', '.coffeescript', '.coffee']
 	}
 }
-cli.addPlugin "eslint-plugin-coffeelint", coffeePlugin
+cli.addPlugin "eslint-plugin-coffee", coffeePlugin
 
 lintFile = (file) -> cli.executeOnFiles [path.resolve(__dirname, file)]
 
@@ -30,12 +30,13 @@ vows.describe('plugin').addBatch
 	'Lints clean':
 		topic: lintSource 'clean.coffee', '''
 			class Parent
-				constructor: (@name) ->
+				constructor: (@name)->
 
 			export class Child extends Parent
 				constructor: (name="") ->
 					super()
 					@name = name
+
 			'''
 
 		'no lint': ({ results }) ->
@@ -50,6 +51,7 @@ vows.describe('plugin').addBatch
 				constructor: (name="") ->
 					super()
 					@name = unused = name
+
 			'''
 
 		'found lint': ({ results }) ->

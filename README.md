@@ -1,4 +1,4 @@
-# eslint-plugin-coffeescript
+# eslint-plugin-coffee
 
 Transpiles .coffee and .cjsx files before with coffeescript, then runs eslint checks on them.
 The plugin ignores some rules that are impossible to satisfy from coffeescript (see [this file](lib/index.js#L22))

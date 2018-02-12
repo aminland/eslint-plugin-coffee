@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-coffeescript",
+  "name": "eslint-plugin-coffee",
   "version": "0.3.0",
   "description": "Transpiles coffee files (.coffee, .cjsx) and runs through eslint. Reports errors with original line numbers.",
   "main": "dist/index.js",
@@ -8,29 +8,39 @@
     "eslintplugin",
     "eslint-plugin"
   ],
-  "author": "alex <alex@rocketguys.com>",
+  "author": "Amin Mirzaee <github:aminland>",
   "scripts": {
-    "test": "node --experimental-modules ./vowsrunner.js test/test_*.coffee --spec",
+    "test": "npm run build && node ./vowsrunner.js test/test_*.coffee --spec",
+    "watch": "node_modules/.bin/coffee --bare --watch --no-header -t -o dist src",
     "build": "node_modules/.bin/coffee --bare --no-header -t -o dist src",
     "prepare": "npm run build"
   },
   "dependencies": {
-    "coffeescript": "^2.1.1",
+    "coffeelint2": "github:aminland/coffeelint2",
     "eslint-module-utils": "^2.1.1",
+    "find-remove": "^1.2.0",
+    "lodash": "^4.17.5",
     "source-map": "^0.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.26.0",
     "babel-eslint": "^6.1.2",
-    "babel-loader": "^6.2.4",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "coffeescript": "^2.1.2",
+
+    "eslint-plugin-import": "^2.8.0",
     "eslint": "^3.9.1",
+    "lodash": "^4.17.5",
     "vows": "^0.8.1"
   },
-  "repository": "git@github.com:a-x-/eslint-plugin-coffeescript.git",
+  "repository": "aminland/eslint-plugin-coffee.git",
   "engines": {
     "node": ">=0.10.0"
   },

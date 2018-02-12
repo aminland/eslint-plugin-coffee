@@ -1,6 +1,14 @@
 {
-	"presets": [
-		["env", { "modules": "commonjs" }]
+	"plugins": [
+		['babel-plugin-lodash', { 'id': 'lodash'}],
+		['babel-plugin-transform-es2015-modules-commonjs', {
+	      'allowTopLevelThis': true
+	    }]
 	],
-	"plugins": ["transform-object-rest-spread"]
+	"presets": [
+		["env", {
+			"modules": "commonjs",
+			"useBuiltIns": "usage"
+		}]
+	]
 }
