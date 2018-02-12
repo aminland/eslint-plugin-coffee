@@ -1,7 +1,7 @@
 import ModuleRequire from 'eslint-module-utils/module-require'
 import { rules, registerCoffeeLintRule } from './rules'
 import { generic_processor, processors } from './processors'
-
+import { isCoffeeFile } from './helpers'
 import BaseConfig from './configs/base'
 import RecommendedConfig from './configs/recommended'
 
@@ -12,7 +12,6 @@ configs =
 	base: BaseConfig
 	recommended: RecommendedConfig
 
-isCoffeeFile = (f) -> f.match new RegExp g.CoffeeExtensions.join('|').replace(/\./g,'\\.')
 # must match ESLint default options or we'll miss the eslint cache every time
 parserOptions =
 	loc: true

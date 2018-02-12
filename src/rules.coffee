@@ -3,7 +3,7 @@ import * as CoffeeLint from 'coffeelint2'
 
 import _ from 'lodash'
 
-import { isLiterate } from './helpers'
+import { isLiterate, isCoffeeFile } from './helpers'
 import g from './globals'
 
 export rules = {}
@@ -57,6 +57,8 @@ export registerCoffeeLintRule = (ruleName, config={}, ruleConstructor=null) ->
 				Program: (node) ->
 					# By this point all rules are created, so we will run this rule from eslint once, and cache that value
 					filename = context.getFilename()
+					return unless isCoffeeFile filename
+
 					current = g.CoffeeCache[filename]
 					if not current.clErrors?
 						current.clErrors = CoffeeLint.lint current.source, g.CoffeeLintConfig, isLiterate(filename)

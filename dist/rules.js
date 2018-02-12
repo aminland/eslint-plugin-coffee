@@ -114,6 +114,9 @@ var registerCoffeeLintRule = exports.registerCoffeeLintRule = function registerC
           var current, filename, rule_errors;
           // By this point all rules are created, so we will run this rule from eslint once, and cache that value
           filename = context.getFilename();
+          if (!(0, _helpers.isCoffeeFile)(filename)) {
+            return;
+          }
           current = _globals2.default.CoffeeCache[filename];
           if (current.clErrors == null) {
             current.clErrors = CoffeeLint.lint(current.source, _globals2.default.CoffeeLintConfig, (0, _helpers.isLiterate)(filename));

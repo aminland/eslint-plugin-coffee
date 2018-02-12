@@ -13,6 +13,8 @@ var _rules = require('./rules');
 
 var _processors = require('./processors');
 
+var _helpers = require('./helpers');
+
 var _base = require('./configs/base');
 
 var _base2 = _interopRequireDefault(_base);
@@ -27,15 +29,11 @@ var _globals2 = _interopRequireDefault(_globals);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var configs, isCoffeeFile, parse, parserOptions;
+var configs, parse, parserOptions;
 
 exports.configs = configs = {
   base: _base2.default,
   recommended: _recommended2.default
-};
-
-isCoffeeFile = function isCoffeeFile(f) {
-  return f.match(new RegExp(_globals2.default.CoffeeExtensions.join('|').replace(/\./g, '\\.')));
 };
 
 // must match ESLint default options or we'll miss the eslint cache every time
@@ -55,7 +53,7 @@ exports.parse = parse = function parse(content, options) {
   if (!options.filePath) {
     throw new Error("no file path provided!");
   }
-  if (isCoffeeFile(options.filePath) && !_globals2.default.CoffeeCache[options.filePath]) {
+  if ((0, _helpers.isCoffeeFile)(options.filePath) && !_globals2.default.CoffeeCache[options.filePath]) {
     // processor hasn't run on this coffeefile (probably from the `import` plugin)
     content = _processors.generic_processor.preprocess(content, options.filePath)[0];
   }
