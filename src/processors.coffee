@@ -66,7 +66,6 @@ export generic_processor =
 
 	postprocess: (messages, filename) ->
 		# maps the messages received to original line numbers and returns
-
 		compiled = g.CoffeeCache[filename]
 		map = new SourceMap.SourceMapConsumer compiled.v3SourceMap
 		output = messages[0]

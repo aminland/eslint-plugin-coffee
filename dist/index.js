@@ -35,7 +35,7 @@ exports.configs = configs = {
 };
 
 isCoffeeFile = function isCoffeeFile(f) {
-  return f.match(new RegExp(_globals2.default.CoffeeExtensions.join('|')));
+  return f.match(new RegExp(_globals2.default.CoffeeExtensions.join('|').replace(/\./g, '\\.')));
 };
 
 // must match ESLint default options or we'll miss the eslint cache every time
@@ -55,7 +55,7 @@ exports.parse = parse = function parse(content, options) {
   if (!options.filePath) {
     throw new Error("no file path provided!");
   }
-  if (f.isCoffeeFile(options.filePath && !_globals2.default.CoffeeCache[options.filePath])) {
+  if (isCoffeeFile(options.filePath) && !_globals2.default.CoffeeCache[options.filePath]) {
     // processor hasn't run on this coffeefile (probably from the `import` plugin)
     content = _processors.generic_processor.preprocess(content, options.filePath)[0];
   }

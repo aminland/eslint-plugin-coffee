@@ -20,12 +20,12 @@
     "eslint-module-utils": "^2.1.1",
     "find-remove": "^1.2.0",
     "lodash": "^4.17.5",
-    "source-map": "^0.6.1"
+    "source-map": "^0.6.1",
+    "babel-eslint": "^7.2.3"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^6.1.2",
     "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
@@ -36,7 +36,7 @@
     "browserify": "^13.3.0",
     "coffeeify": "^1.2.0",
     "coffeescript": "^2.1.2",
-    "eslint": "^3.9.1",
+    "eslint": "^4.17.0",
     "eslint-plugin-import": "^2.8.0",
     "lodash": "^4.17.5",
     "vows": "^0.8.1"

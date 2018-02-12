@@ -16,7 +16,7 @@ module.exports = {
     node: true,
     es6: true
   },
-  plugins: ['coffee'],
+  plugins: ['eslint-plugin-coffee'],
   rules: {
     'coffee/coffeescript-error': ['error', {}]
   }
