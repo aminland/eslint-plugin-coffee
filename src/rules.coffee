@@ -1,3 +1,4 @@
+import ModuleRequire from 'eslint-module-utils/module-require'
 import * as CoffeeLint from 'coffeelint2'
 
 import _ from 'lodash'
@@ -45,7 +46,7 @@ export registerCoffeeLintRule = (ruleName, config={}, ruleConstructor=null) ->
 				additionalProperties: true
 			]
 		create: (context) ->
-			# level cannot br known from inside an eslint rule.
+			# level cannot be known from inside an eslint rule.
 			# if we've gotten here already, the assumption is that the rule is not off
 			options = { ...context.options[0], level: 'warn' }
 

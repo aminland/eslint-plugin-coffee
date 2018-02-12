@@ -4,23 +4,8 @@ assert = require 'assert'
 
 coffeePlugin = require(path.resolve(__dirname, '../dist'))
 CLIEngine = require('eslint').CLIEngine
-cli = new CLIEngine {
-
-	'parser': path.resolve(__dirname, '../dist'),
-	'parserOptions': { # original parser config goes here
-		'parser': 'babel-eslint',
-		'sourceType': 'module',
-		'ecmaVersion': 8,
-		'coffeeExtensions': ['.cjsx', '.coffeescript', '.coffee']
-	},
-	'env': {
-		'node': true,
-	},
-	settings: {
-		'coffee-extensions': ['.cjsx', '.coffeescript', '.coffee']
-	}
-}
-cli.addPlugin "eslint-plugin-coffee", coffeePlugin
+cli = new CLIEngine {}
+cli.addPlugin "coffee", coffeePlugin
 
 lintFile = (file) -> cli.executeOnFiles [path.resolve(__dirname, file)]
 
