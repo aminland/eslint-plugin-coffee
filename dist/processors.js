@@ -51,8 +51,8 @@ var unfixableRules = exports.unfixableRules = (0, _helpers.arrayToObject)(['no-v
 var generic_processor = exports.generic_processor = {
   preprocess: function preprocess(content, filename) {
     var results;
-    if (_globals2.default.CoffeeCache.has(filename)) {
-      content = _globals2.default.CoffeeCache.get(filename).js;
+    if (_globals2.default.CoffeeCache[filename]) {
+      content = _globals2.default.CoffeeCache[filename].js;
     } else {
       results = _coffeescript2.default.compile(content, {
         sourceMap: true,
@@ -63,7 +63,7 @@ var generic_processor = exports.generic_processor = {
       });
       results.source = content;
       // save result for later
-      _globals2.default.CoffeeCache.set(filename, results);
+      _globals2.default.CoffeeCache[filename] = results;
       content = results.js;
     }
     return [content];
@@ -71,7 +71,7 @@ var generic_processor = exports.generic_processor = {
   postprocess: function postprocess(messages, filename) {
     var compiled, map, output;
     // maps the messages received to original line numbers and returns
-    compiled = _globals2.default.CoffeeCache.get(filename);
+    compiled = _globals2.default.CoffeeCache[filename];
     map = new _sourceMap2.default.SourceMapConsumer(compiled.v3SourceMap);
     output = messages[0].map(function (m) {
       var end, start;
@@ -106,6 +106,7 @@ var generic_processor = exports.generic_processor = {
       }
       return true;
     });
+    delete _globals2.default.CoffeeCache[filename];
     return output;
   }
 };

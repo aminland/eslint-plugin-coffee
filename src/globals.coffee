@@ -1,7 +1,7 @@
-import Cache from './cache'
+
 
 CoffeeExtensions = ['.cjsx', '.cjs', '.coffeescript', '.coffee', '.xcoffee', '.litcoffee', '.litxcoffee', '.litcjsx']
 CoffeeLintConfig = {}
-CoffeeCache = new Cache()
+CoffeeCache = {}
 
 export default { CoffeeCache, CoffeeLintConfig, CoffeeExtensions }

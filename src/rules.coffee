@@ -56,10 +56,10 @@ export registerCoffeeLintRule = (ruleName, config={}, ruleConstructor=null) ->
 				Program: (node) ->
 					# By this point all rules are created, so we will run this rule from eslint once, and cache that value
 					filename = context.getFilename()
-					current = g.CoffeeCache.get filename
+					current = g.CoffeeCache[filename]
 					if not current.clErrors?
 						current.clErrors = CoffeeLint.lint current.source, g.CoffeeLintConfig, isLiterate(filename)
-						g.CoffeeCache.set filename, current
+						g.CoffeeCache[filename] = current
 
 					rule_errors = current.clErrors
 						.filter (el) -> el.name == _.snakeCase(ruleName)

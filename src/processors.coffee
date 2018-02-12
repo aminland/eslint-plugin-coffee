@@ -47,8 +47,8 @@ export unfixableRules = arrayToObject [
 
 export generic_processor =
 	preprocess: (content, filename) ->
-		if g.CoffeeCache.has filename
-			content = g.CoffeeCache.get(filename).js
+		if g.CoffeeCache[filename]
+			content = g.CoffeeCache[filename].js
 		else
 			results = CoffeeScript.compile content,
 				sourceMap: true,
@@ -59,7 +59,7 @@ export generic_processor =
 
 			results.source = content
 			# save result for later
-			g.CoffeeCache.set filename, results
+			g.CoffeeCache[filename] = results
 			content = results.js
 
 		return [content]
@@ -67,7 +67,7 @@ export generic_processor =
 	postprocess: (messages, filename) ->
 		# maps the messages received to original line numbers and returns
 
-		compiled = g.CoffeeCache.get filename
+		compiled = g.CoffeeCache[filename]
 		map = new SourceMap.SourceMapConsumer compiled.v3SourceMap
 		output = messages[0]
 			.map((m) ->
@@ -96,6 +96,8 @@ export generic_processor =
 
 				return true
 			)
+
+		delete g.CoffeeCache[filename]
 
 		return output
 
