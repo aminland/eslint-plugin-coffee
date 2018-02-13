@@ -15,7 +15,8 @@
     "build": "node_modules/.bin/coffee --bare --no-header -t -o dist src"
   },
   "dependencies": {
-    "coffeelint2": "github:aminland/coffeelint2",
+    "coffeelint2": "@fellow/coffeelint2",
+    "coffeescript": "^2.1.2",
     "eslint-module-utils": "^2.1.1",
     "find-remove": "^1.2.0",
     "lodash": "^4.17.5",
@@ -32,9 +33,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "babel-runtime": "^6.26.0",
-    "browserify": "^13.3.0",
-    "coffeeify": "^1.2.0",
-    "coffeescript": "^2.1.2",
     "eslint": "^4.17.0",
     "eslint-plugin-import": "^2.8.0",
     "lodash": "^4.17.5",
