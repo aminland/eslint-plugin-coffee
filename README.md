@@ -1,7 +1,11 @@
-# eslint-plugin-coffee
+# @fellow/eslint-plugin-coffee
 
-Transpiles .coffee and .cjsx files before with coffeescript, then runs eslint checks on them.
-The plugin ignores some rules that are impossible to satisfy from coffeescript (see [this file](lib/index.js#L22))
+Transpiles coffee files first with coffeescript, then runs eslint checks on them. Line / Column reporting is processed through sourcemap data, so they will be accurate for your coffee files.
+
+The plugin ignores some rules that are impossible to satisfy from coffeescript (see [this file](src/processors.coffee#L8))
+
+It additionally runs rules from [coffeelint2](https://www.npmjs.com/package/@fellow/coffeelint2) by creating a fake rule in eslint which wraps and maps the coffeelint2 rules. 
+
 
 ## Installation
 
@@ -19,18 +23,33 @@ $ npm install @fellow/eslint-plugin-coffee --save-dev
 
 **Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `@fellow/eslint-plugin-coffee` globally.
 
-## Manual Usage
-Add `@fellow/coffee` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+
+## Easy Usage
+Edit your `.eslintrc` file. and add this plugin. The easiest configuration is to just extend the base config provided to get a good set of rules ([see here](src/configs/recommended.coffee)). Note that you can omit the `eslint-plugin-` prefix:
 
 ```yaml
-{
+{ 
+    "extends": ["plugin:@fellow/coffee/recommended"],
     "plugins": [
-    "@fellow/coffee", # ...
+      "@fellow/coffee", 
+      # ...
     ]
 }
 ```
 
-To have imports resolve properly with the `eslint-plugins-imports` module, you must set this plugin to wrap your default parser:
+## Manual Configuration
+For ESLint rules only, add `@fellow/coffee` to the plugins section of your `.eslintrc` configuration file. This will cover many things well if use a good set of base rules. As always, you can omit the `eslint-plugin-` prefix:
+
+```yaml
+{
+  "plugins": [
+    "@fellow/coffee", 
+      # ...
+  ]
+}
+```
+
+For better compatibility with other plugins (e.g. `eslint-plugins-imports`), I also provide a "parser" which eslint can hook into. Plugins like the `import` plugin do not run through checks or otherwise require  module, you must set this plugin to wrap your default parser:
 ```yaml
 {
   "parser": "@fellow/eslint-plugin-coffee",
@@ -40,32 +59,21 @@ To have imports resolve properly with the `eslint-plugins-imports` module, you m
     "ecmaVersion": 6
   },
   "plugins": [
-    "@fellow/eslint-plugin-coffee", # ...
+    "@fellow/eslint-plugin-coffee", 
+    # ...
   ],
   "rules": {
     "@fellow/coffee/coffeescript-error": ["error", {}],
-    ...
+    # ...
   }
 
 }
 ```
 
-You can add rules from my modified[coffeelint](https://github.com/aminland/coffeelint2). 
+To see how to add your own coffeelint-style rules, switch your `.eslintrc` -> `.eslintrc.js` and add:
+`require('@fellow/eslint-plugin-coffee').registerCoffeeLintRule('myRuleModule')` at the top. 
 
+Then include it in the `rules` section of your `.eslintrc.js`, passing any config options your rule might expect. 
 
-## Easy Usage
-The easiest configuration is to just extend the base config provided to get a good set of rules ([see here](src/configs/recommended.coffee)):
-
-```yaml
-{	
-    "extends": ["plugin:@fellow/coffee/recommended"],
-    "plugins": [
-        "@fellow/coffee", # ...
-    ]
-}
-```
-
-
-
-
+To learn how to write rules for coffeelint, check their docs.
 

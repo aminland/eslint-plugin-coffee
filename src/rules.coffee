@@ -35,7 +35,7 @@ export registerCoffeeLintRule = (ruleName, config={}, ruleConstructor=null) ->
 		#this is the default fallback, we dont want to mess with it.
 		CoffeeLint.registerRule wrappedRule, ruleName
 
-	name = _.kebabCase(ruleName.split('.').reverse()[0])
+	name = _.kebabCase(ruleName.split('/').reverse()[0].split('.').reverse()[0])
 	return rules[name] = {
 		meta:
 			docs:
@@ -69,7 +69,7 @@ export registerCoffeeLintRule = (ruleName, config={}, ruleConstructor=null) ->
 						g.CoffeeCache[filename] = current
 
 					rule_errors = current.clErrors
-						.filter (el) -> el.name == _.snakeCase(ruleName)
+						.filter (el) -> _.kebabCase(el.name) == ruleName
 						.map (el) ->
 							location = {}
 							if el.lineNumber

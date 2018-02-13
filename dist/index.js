@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.configs = exports.parse = exports.processors = exports.rules = undefined;
+exports.registerCoffeeLintRule = exports.configs = exports.parse = exports.processors = exports.rules = undefined;
 
 var _moduleRequire = require('eslint-module-utils/module-require');
 
@@ -65,3 +65,4 @@ exports.rules = _rules.rules;
 exports.processors = _processors.processors;
 exports.parse = parse;
 exports.configs = configs;
+exports.registerCoffeeLintRule = _rules.registerCoffeeLintRule;

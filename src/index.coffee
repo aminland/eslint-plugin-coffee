@@ -36,4 +36,4 @@ parse = (content, options) ->
 	# file is coffeescript at this point
 	return realParser.parse(content, options)
 
-export { rules, processors, parse, configs }
+export { rules, processors, parse, configs, registerCoffeeLintRule }

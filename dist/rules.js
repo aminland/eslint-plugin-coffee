@@ -5,10 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.registerCoffeeLintRule = exports.rules = undefined;
 
-var _snakeCase2 = require('lodash/snakeCase');
-
-var _snakeCase3 = _interopRequireDefault(_snakeCase2);
-
 var _omit2 = require('lodash/omit');
 
 var _omit3 = _interopRequireDefault(_omit2);
@@ -91,7 +87,7 @@ var registerCoffeeLintRule = exports.registerCoffeeLintRule = function registerC
     //this is the default fallback, we dont want to mess with it.
     CoffeeLint.registerRule(wrappedRule, ruleName);
   }
-  name = (0, _kebabCase3.default)(ruleName.split('.').reverse()[0]);
+  name = (0, _kebabCase3.default)(ruleName.split('/').reverse()[0].split('.').reverse()[0]);
   return rules[name] = {
     meta: {
       docs: {
@@ -129,7 +125,7 @@ var registerCoffeeLintRule = exports.registerCoffeeLintRule = function registerC
             _globals2.default.CoffeeCache[filename] = current;
           }
           rule_errors = current.clErrors.filter(function (el) {
-            return el.name === (0, _snakeCase3.default)(ruleName);
+            return (0, _kebabCase3.default)(el.name) === ruleName;
           }).map(function (el) {
             var location, ref2, ref3;
             location = {};
