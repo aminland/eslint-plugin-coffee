@@ -1,6 +1,6 @@
 module.exports =
 	root: true
-	parser: "eslint-plugin-coffee",
+	parser: "@fellow/eslint-plugin-coffee",
 	parserOptions:
 		parser: 'babel-eslint' # Original parser config goes here
 		sourceType: 'module'
@@ -13,6 +13,6 @@ module.exports =
 		node: true
 		es6: true
 
-	plugins: ['eslint-plugin-coffee']
+	plugins: ['@fellow/eslint-plugin-coffee']
 	rules:
-		'coffee/coffeescript-error': ['error', {}]
+		'@fellow/coffee/coffeescript-error': ['error', {}]

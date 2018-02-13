@@ -7,5 +7,5 @@ export arrayToObject = (arr) -> Object.assign {}, ...arr.map (item) ->
 export isLiterate = (filename) ->
 	filename.toLocaleLowerCase().split('.')[-1..][0].startsWith('lit')
 
-isCoffeeFile = (f) ->
+export isCoffeeFile = (f) ->
 	f.match new RegExp g.CoffeeExtensions.join('|').replace(/\./g,'\\.')

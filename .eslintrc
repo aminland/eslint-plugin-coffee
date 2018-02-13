@@ -1,9 +1,9 @@
 {
 	plugins: [
-		"coffee"
+		"@fellow/coffee"
 	],
 	"extends": [
-		"plugin:coffee/recommended",
+		"plugin:@fellow/coffee/recommended",
 		"eslint:recommended"
 	]
 }

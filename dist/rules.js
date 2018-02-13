@@ -25,7 +25,7 @@ var _moduleRequire = require('eslint-module-utils/module-require');
 
 var _moduleRequire2 = _interopRequireDefault(_moduleRequire);
 
-var _coffeelint = require('coffeelint2');
+var _coffeelint = require('@fellow/coffeelint2');
 
 var CoffeeLint = _interopRequireWildcard(_coffeelint);
 
@@ -68,10 +68,16 @@ var registerCoffeeLintRule = exports.registerCoffeeLintRule = function registerC
     wrappedRule = ruleName;
   } else {
     try {
-      wrappedRule = require('coffeelint2/lib/rules/' + ruleName);
+      wrappedRule = require('@fellow/coffeelint2/lib/rules/' + ruleName);
     } catch (error) {
       e = error;
-      wrappedRule = (0, _moduleRequire2.default)('' + ruleName);
+      console.log(e);
+      try {
+        wrappedRule = require('coffeelint/lib/rules/' + ruleName);
+      } catch (error) {
+        e = error;
+        wrappedRule = (0, _moduleRequire2.default)('' + ruleName);
+      }
     }
   }
   // by default we want these rules to be ignored.
@@ -173,78 +179,78 @@ CoffeescriptError = function () {
   return CoffeescriptError;
 }.call(undefined);
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/arrow_spacing'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/arrow_spacing'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/braces_spacing'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/braces_spacing'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_tabs'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_tabs'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_trailing_whitespace'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_trailing_whitespace'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/max_line_length'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/max_line_length'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/line_endings'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/line_endings'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_trailing_semicolons'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_trailing_semicolons'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/indentation'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/indentation'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/camel_case_classes'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/camel_case_classes'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/colon_assignment_spacing'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/colon_assignment_spacing'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_implicit_braces'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_implicit_braces'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_nested_string_interpolation'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_nested_string_interpolation'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_plusplus'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_plusplus'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_throwing_strings'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_throwing_strings'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_backticks'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_backticks'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_implicit_parens'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_implicit_parens'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_empty_param_list'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_empty_param_list'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_stand_alone_at'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_stand_alone_at'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/space_operators'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/space_operators'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/duplicate_key'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/duplicate_key'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/empty_constructor_needs_parens'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/empty_constructor_needs_parens'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/cyclomatic_complexity'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/cyclomatic_complexity'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/newlines_after_classes'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/newlines_after_classes'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_unnecessary_fat_arrows'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_unnecessary_fat_arrows'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/missing_fat_arrows'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/missing_fat_arrows'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_unnecessary_double_quotes'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_unnecessary_double_quotes'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_debugger'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_debugger'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_interpolation_in_single_quotes'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_interpolation_in_single_quotes'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_empty_functions'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_empty_functions'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/prefer_english_operator'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/prefer_english_operator'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/spacing_after_comma'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/spacing_after_comma'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/transform_messes_up_line_numbers'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/transform_messes_up_line_numbers'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/ensure_comprehensions'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/ensure_comprehensions'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_this'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_this'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/eol_last'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/eol_last'));
 
-registerCoffeeLintRule(require('coffeelint2/lib/rules/no_private_function_fat_arrows'));
+registerCoffeeLintRule(require('@fellow/coffeelint2/lib/rules/no_private_function_fat_arrows'));
 
 registerCoffeeLintRule(CoffeescriptError);
 
-//registerCoffeeLintRule require 'coffeelint2/lib/rules/non_empty_constructor_needs_parens'
+//registerCoffeeLintRule require '@fellow/coffeelint2/lib/rules/non_empty_constructor_needs_parens'

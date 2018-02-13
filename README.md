@@ -25,7 +25,7 @@ Add `coffee` to the plugins section of your `.eslintrc` configuration file. You 
 ```yaml
 {
     "plugins": [
-    "coffee", # ...
+    "@fellow/coffee", # ...
     ]
 }
 ```
@@ -33,17 +33,17 @@ Add `coffee` to the plugins section of your `.eslintrc` configuration file. You 
 To have imports resolve properly with the `eslint-plugins-imports` module, you must set this plugin to wrap your default parser:
 ```yaml
 {
-  "parser": "eslint-plugin-coffee",
+  "parser": "@fellow/eslint-plugin-coffee",
   "parserOptions": { 
     "parser": "babel-eslint", # original parser goes here (you must specify one to use this option).
     "sourceType": "module", # any original parser config options you had.
     "ecmaVersion": 6
   },
   "plugins": [
-    "coffee", # ...
+    "@fellow/eslint-plugin-coffee", # ...
   ],
   "rules": {
-    "coffee/coffeescript-error": ["error", {}],
+    "@fellow/coffee/coffeescript-error": ["error", {}],
     ...
   }
 
@@ -58,9 +58,9 @@ The easiest configuration is to just extend the base config provided to get a go
 
 ```yaml
 {	
-    "extends": ["plugin:coffee/recommended"],
+    "extends": ["plugin:@fellow/coffee/recommended"],
     "plugins": [
-    "coffee", # ...
+        "@fellow/coffee", # ...
     ]
 }
 ```
