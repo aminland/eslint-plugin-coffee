@@ -11,16 +11,16 @@ You'll first need to install [ESLint](http://eslint.org):
 $ npm i eslint --save-dev
 ```
 
-Next, install `eslint-plugin-coffee`:
+Next, install `@fellow/eslint-plugin-coffee`:
 
 ```
-$ npm install eslint-plugin-coffee --save-dev
+$ npm install @fellow/eslint-plugin-coffee --save-dev
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-coffee` globally.
+**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `@fellow/eslint-plugin-coffee` globally.
 
 ## Manual Usage
-Add `coffee` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `@fellow/coffee` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```yaml
 {
