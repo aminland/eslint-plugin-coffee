@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-coffee",
+  "name": "@fellow/eslint-plugin-coffee",
   "version": "0.4.0",
   "description": "Transpiles coffee files (.coffee, .cjsx) and runs through eslint. Reports errors with original line numbers.",
   "main": "dist/index.js",
@@ -12,8 +12,7 @@
   "scripts": {
     "test": "npm run build && node ./vowsrunner.js test/test_*.coffee --spec",
     "watch": "node_modules/.bin/coffee --bare --watch --no-header -t -o dist src",
-    "build": "node_modules/.bin/coffee --bare --no-header -t -o dist src",
-    "prepare": "npm run build"
+    "build": "node_modules/.bin/coffee --bare --no-header -t -o dist src"
   },
   "dependencies": {
     "coffeelint2": "github:aminland/coffeelint2",
