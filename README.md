@@ -6,6 +6,7 @@ The plugin ignores some rules that are impossible to satisfy from coffeescript (
 
 It additionally runs rules from [coffeelint2](https://www.npmjs.com/package/@fellow/coffeelint2) by creating a fake rule in eslint which wraps and maps the coffeelint2 rules. 
 
+**Special thanks** to [Alexander Mextner](https://github.com/a-x-) for getting this started and providing the base code.
 
 ## Installation
 
