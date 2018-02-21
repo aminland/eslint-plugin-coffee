@@ -5,8 +5,10 @@
   "main": "dist/index.js",
   "keywords": [
     "eslint",
-    "eslintplugin",
-    "eslint-plugin"
+    "eslint-plugin",
+    "coffeescript",
+    "coffee",
+    "coffeelint"
   ],
   "author": "Amin Mirzaee <github:aminland>",
   "scripts": {
