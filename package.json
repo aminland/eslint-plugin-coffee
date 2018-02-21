@@ -1,6 +1,6 @@
 {
   "name": "@fellow/eslint-plugin-coffee",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Transpiles coffee files (.coffee, .cjsx) and runs through eslint. Reports errors with original line numbers.",
   "main": "dist/index.js",
   "keywords": [
