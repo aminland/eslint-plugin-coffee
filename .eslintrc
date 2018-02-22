@@ -5,5 +5,9 @@
 	"extends": [
 		"plugin:@fellow/coffee/recommended",
 		"eslint:recommended"
-	]
+	],
+	rules: {
+		'@fellow/coffee/indentation': ['error', value: 1 ]
+	}
+
 }

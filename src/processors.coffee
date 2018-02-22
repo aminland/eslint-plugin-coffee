@@ -50,12 +50,16 @@ export generic_processor =
 		if g.CoffeeCache[filename]
 			content = g.CoffeeCache[filename].js
 		else
-			results = CoffeeScript.compile content,
-				sourceMap: true,
-				bare: true,
-				header: false,
-				filename: filename
-				literate: isLiterate filename
+			try
+				results = CoffeeScript.compile content,
+					sourceMap: true,
+					bare: true,
+					header: false,
+					filename: filename
+					literate: isLiterate filename
+			catch
+				results =
+					js: '// Syntax Error'
 
 			results.source = content
 			# save result for later
@@ -67,10 +71,14 @@ export generic_processor =
 	postprocess: (messages, filename) ->
 		# maps the messages received to original line numbers and returns
 		compiled = g.CoffeeCache[filename]
-		map = new SourceMap.SourceMapConsumer compiled.v3SourceMap
+
+		map = undefined
+		if compiled.v3SourceMap
+			map = new SourceMap.SourceMapConsumer compiled.v3SourceMap
+
 		output = messages[0]
 			.map((m) ->
-				if m.nodeType == "coffeelint"
+				if m.nodeType == "coffeelint" or not map?
 					return m
 				start = map.originalPositionFor line:m.line, column:m.column, bias: map.LEAST_UPPER_BOUND
 				end = map.originalPositionFor line:m.endLine, column:m.endColumn, bias: map.GREATEST_LOWER_BOUND

@@ -67,7 +67,6 @@ var registerCoffeeLintRule = exports.registerCoffeeLintRule = function registerC
       wrappedRule = require('@fellow/coffeelint2/lib/rules/' + ruleName);
     } catch (error) {
       e = error;
-      console.log(e);
       try {
         wrappedRule = require('coffeelint/lib/rules/' + ruleName);
       } catch (error) {
@@ -121,11 +120,16 @@ var registerCoffeeLintRule = exports.registerCoffeeLintRule = function registerC
           }
           current = _globals2.default.CoffeeCache[filename];
           if (current.clErrors == null) {
-            current.clErrors = CoffeeLint.lint(current.source, _globals2.default.CoffeeLintConfig, (0, _helpers.isLiterate)(filename));
+            try {
+              current.clErrors = CoffeeLint.lint(current.source, _globals2.default.CoffeeLintConfig, (0, _helpers.isLiterate)(filename));
+            } catch (error) {
+              e = error;
+              console.log(e);
+            }
             _globals2.default.CoffeeCache[filename] = current;
           }
           rule_errors = current.clErrors.filter(function (el) {
-            return (0, _kebabCase3.default)(el.name) === ruleName;
+            return (0, _kebabCase3.default)(el.name) === (0, _kebabCase3.default)(ruleName) || el.name == null && ruleName === 'coffeescript_error';
           }).map(function (el) {
             var location, ref2, ref3;
             location = {};

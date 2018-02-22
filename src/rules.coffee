@@ -21,7 +21,6 @@ export registerCoffeeLintRule = (ruleName, config={}, ruleConstructor=null) ->
 		try
 			wrappedRule = require("@fellow/coffeelint2/lib/rules/#{ruleName}")
 		catch e
-			console.log e
 			try
 				wrappedRule = require("coffeelint/lib/rules/#{ruleName}")
 			catch e
@@ -36,7 +35,7 @@ export registerCoffeeLintRule = (ruleName, config={}, ruleConstructor=null) ->
 		CoffeeLint.registerRule wrappedRule, ruleName
 
 	name = _.kebabCase(ruleName.split('/').reverse()[0].split('.').reverse()[0])
-	return rules[name] = {
+	return rules[name]  = {
 		meta:
 			docs:
 				name: ruleName
@@ -65,11 +64,16 @@ export registerCoffeeLintRule = (ruleName, config={}, ruleConstructor=null) ->
 
 					current = g.CoffeeCache[filename]
 					if not current.clErrors?
-						current.clErrors = CoffeeLint.lint current.source, g.CoffeeLintConfig, isLiterate(filename)
+						try
+							current.clErrors = CoffeeLint.lint current.source, g.CoffeeLintConfig, isLiterate(filename)
+						catch e
+							console.log e
 						g.CoffeeCache[filename] = current
 
 					rule_errors = current.clErrors
-						.filter (el) -> _.kebabCase(el.name) == ruleName
+						.filter (el) ->
+							_.kebabCase(el.name) == _.kebabCase(ruleName) or
+								not el.name? and ruleName == 'coffeescript_error'
 						.map (el) ->
 							location = {}
 							if el.lineNumber

@@ -54,13 +54,19 @@ var generic_processor = exports.generic_processor = {
     if (_globals2.default.CoffeeCache[filename]) {
       content = _globals2.default.CoffeeCache[filename].js;
     } else {
-      results = _coffeescript2.default.compile(content, {
-        sourceMap: true,
-        bare: true,
-        header: false,
-        filename: filename,
-        literate: (0, _helpers.isLiterate)(filename)
-      });
+      try {
+        results = _coffeescript2.default.compile(content, {
+          sourceMap: true,
+          bare: true,
+          header: false,
+          filename: filename,
+          literate: (0, _helpers.isLiterate)(filename)
+        });
+      } catch (error) {
+        results = {
+          js: '// Syntax Error'
+        };
+      }
       results.source = content;
       // save result for later
       _globals2.default.CoffeeCache[filename] = results;
@@ -72,10 +78,13 @@ var generic_processor = exports.generic_processor = {
     var compiled, map, output;
     // maps the messages received to original line numbers and returns
     compiled = _globals2.default.CoffeeCache[filename];
-    map = new _sourceMap2.default.SourceMapConsumer(compiled.v3SourceMap);
+    map = void 0;
+    if (compiled.v3SourceMap) {
+      map = new _sourceMap2.default.SourceMapConsumer(compiled.v3SourceMap);
+    }
     output = messages[0].map(function (m) {
       var end, start;
-      if (m.nodeType === "coffeelint") {
+      if (m.nodeType === "coffeelint" || map == null) {
         return m;
       }
       start = map.originalPositionFor({

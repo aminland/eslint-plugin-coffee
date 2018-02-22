@@ -1,11 +1,9 @@
 module.exports =
 	extends: require.resolve('./base'),
 	rules:
-		'@fellow/coffee/arrow-spacing': ['error',
-			spacing: { before: 1, after: 1 }
-		]
-		'@fellow/coffee/camel-case-classes': ['error', {}]
 		'@fellow/coffee/coffeescript-error': ['error', {}]
+		'@fellow/coffee/arrow-spacing': ['warn',{}]
+		'@fellow/coffee/camel-case-classes': ['warn', {}]
 		'@fellow/coffee/duplicate-key': ['error', {}]
 		'@fellow/coffee/ensure-comprehensions': ['error', {}]
 		'@fellow/coffee/eol-last': ['warn', {}]
@@ -17,13 +15,13 @@ module.exports =
 			spacing: { left: 0, right: 1 }
 		]
 		'@fellow/coffee/cyclomatic-complexity': ['error', value: 10 ]
-		'@fellow/coffee/indentation': ['error', value: 1 ]
+		'@fellow/coffee/indentation': ['error', value: 4 ]
 		'@fellow/coffee/line-endings': ['error', value: 'unix' ]
 		'@fellow/coffee/max-line-length': ['warn',
 			value: 150,
 			limitComments: false
 		]
-		'@fellow/coffee/missing-fat-arrows': ['warn', is_strict: false ]
+		'@fellow/coffee/missing-fat-arrows': ['error', is_strict: true ]
 		'@fellow/coffee/newlines-after-classes': ['off', value: 2 ]
 		'@fellow/coffee/no-debugger': ['warn', console: true ]
 		'@fellow/coffee/no-empty-functions': ['off', {}]

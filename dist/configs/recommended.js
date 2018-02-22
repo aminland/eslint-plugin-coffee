@@ -3,14 +3,9 @@
 module.exports = {
   extends: require.resolve('./base'),
   rules: {
-    '@fellow/coffee/arrow-spacing': ['error', {
-      spacing: {
-        before: 1,
-        after: 1
-      }
-    }],
-    '@fellow/coffee/camel-case-classes': ['error', {}],
     '@fellow/coffee/coffeescript-error': ['error', {}],
+    '@fellow/coffee/arrow-spacing': ['warn', {}],
+    '@fellow/coffee/camel-case-classes': ['warn', {}],
     '@fellow/coffee/duplicate-key': ['error', {}],
     '@fellow/coffee/ensure-comprehensions': ['error', {}],
     '@fellow/coffee/eol-last': ['warn', {}],
@@ -28,7 +23,7 @@ module.exports = {
       value: 10
     }],
     '@fellow/coffee/indentation': ['error', {
-      value: 1
+      value: 4
     }],
     '@fellow/coffee/line-endings': ['error', {
       value: 'unix'
@@ -37,8 +32,8 @@ module.exports = {
       value: 150,
       limitComments: false
     }],
-    '@fellow/coffee/missing-fat-arrows': ['warn', {
-      is_strict: false
+    '@fellow/coffee/missing-fat-arrows': ['error', {
+      is_strict: true
     }],
     '@fellow/coffee/newlines-after-classes': ['off', {
       value: 2
