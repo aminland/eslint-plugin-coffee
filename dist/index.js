@@ -23,6 +23,10 @@ var _recommended = require('./configs/recommended');
 
 var _recommended2 = _interopRequireDefault(_recommended);
 
+var _recommendedTabs = require('./configs/recommended-tabs');
+
+var _recommendedTabs2 = _interopRequireDefault(_recommendedTabs);
+
 var _globals = require('./globals');
 
 var _globals2 = _interopRequireDefault(_globals);
@@ -33,7 +37,8 @@ var configs, parse, parserOptions;
 
 exports.configs = configs = {
   base: _base2.default,
-  recommended: _recommended2.default
+  recommended: _recommended2.default,
+  'recommended-tabs': _recommendedTabs2.default
 };
 
 // must match ESLint default options or we'll miss the eslint cache every time

@@ -1,8 +1,15 @@
 'use strict';
 
+require('../rules').registerCoffeeLintRule(require('../rules/no_spaces'));
+
 module.exports = {
   extends: require.resolve('./base'),
   rules: {
+    '@fellow/coffee/indentation': ['error', {
+      value: 4
+    }],
+    '@fellow/coffee/no-tabs': ['warn', {}],
+    '@fellow/coffee/no-spaces': ['off', {}],
     '@fellow/coffee/coffeescript-error': ['error', {}],
     '@fellow/coffee/arrow-spacing': ['warn', {}],
     '@fellow/coffee/camel-case-classes': ['warn', {}],
@@ -22,9 +29,6 @@ module.exports = {
     '@fellow/coffee/cyclomatic-complexity': ['error', {
       value: 10
     }],
-    '@fellow/coffee/indentation': ['error', {
-      value: 4
-    }],
     '@fellow/coffee/line-endings': ['error', {
       value: 'unix'
     }],
@@ -32,7 +36,7 @@ module.exports = {
       value: 150,
       limitComments: false
     }],
-    '@fellow/coffee/missing-fat-arrows': ['error', {
+    '@fellow/coffee/missing-fat-arrows': ['warn', {
       is_strict: true
     }],
     '@fellow/coffee/newlines-after-classes': ['off', {
@@ -41,7 +45,7 @@ module.exports = {
     '@fellow/coffee/no-debugger': ['warn', {
       console: true
     }],
-    '@fellow/coffee/no-empty-functions': ['off', {}],
+    '@fellow/coffee/no-empty-functions': ['warn', {}],
     '@fellow/coffee/no-empty-param-list': ['off', {}],
     '@fellow/coffee/no-implicit-braces': ['off', {
       warn: true
@@ -55,9 +59,8 @@ module.exports = {
       allowed_in_comments: false,
       allowed_in_empty_lines: false
     }],
-    '@fellow/coffee/no-tabs': ['off', {}],
     '@fellow/coffee/no-this': ['error', {}],
-    '@fellow/coffee/no-backticks': ['error', {}],
+    '@fellow/coffee/no-backticks': ['warn', {}],
     '@fellow/coffee/no-plusplus': ['off', {}],
     '@fellow/coffee/no-stand-alone-at': ['off', {}],
     '@fellow/coffee/no-private-function-fat-arrows': ['warn', {}],

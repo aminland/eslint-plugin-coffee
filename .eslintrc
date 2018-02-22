@@ -3,11 +3,11 @@
 		"@fellow/coffee"
 	],
 	"extends": [
-		"plugin:@fellow/coffee/recommended",
+		"plugin:@fellow/coffee/recommended-tabs",
 		"eslint:recommended"
 	],
 	rules: {
-		'@fellow/coffee/indentation': ['error', value: 1 ]
+
 	}
 
 }

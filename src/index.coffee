@@ -4,6 +4,7 @@ import { generic_processor, processors } from './processors'
 import { isCoffeeFile } from './helpers'
 import BaseConfig from './configs/base'
 import RecommendedConfig from './configs/recommended'
+import RecommendedTabsConfig from './configs/recommended-tabs'
 
 import g from './globals'
 
@@ -11,6 +12,7 @@ import g from './globals'
 configs =
 	base: BaseConfig
 	recommended: RecommendedConfig
+	'recommended-tabs': RecommendedTabsConfig
 
 # must match ESLint default options or we'll miss the eslint cache every time
 parserOptions =

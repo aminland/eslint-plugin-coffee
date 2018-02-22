@@ -15,7 +15,7 @@ vows.describe('plugin').addBatch
 	'Lints clean':
 		topic: lintSource 'clean.coffee', '''
 			class Parent
-				constructor: (@name)->
+				constructor: (@name) -> ''
 
 			export class Child extends Parent
 				constructor: (name="") ->
@@ -30,7 +30,7 @@ vows.describe('plugin').addBatch
 	'Lints dirty':
 		topic: lintSource 'incorrect.coffee', '''
 			class Parent
-				constructor: (@name) ->
+				constructor: (@name) -> ''
 
 			export class Child extends Parent
 				constructor: (name="") ->
@@ -46,7 +46,7 @@ vows.describe('plugin').addBatch
 	'Bad Syntax':
 		topic: lintSource 'dirty.coffee', '''
 			class Parent
-				constructor: (@name) ->
+				constructor: (@name) -> ''
 
 			export class Child extends Parent
 				constructor: (parent) ==>
