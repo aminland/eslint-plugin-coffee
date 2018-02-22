@@ -44,21 +44,17 @@ vows.describe('plugin').addBatch
 			assert.deepEqual message, ["'unused' is assigned a value but never used."]
 
 	'Bad Syntax':
-		topic: ['dirty.coffee', '''
+		topic: lintSource 'dirty.coffee', '''
 			class Parent
 				constructor: (@name) ->
 
 			export class Child extends Parent
-				constructor: (@parent) ->
+				constructor: (parent) ==>
 
-			''']
+			'''
 
-		'throws syntax error': (args) ->
-			try
-				{ results } = lintSource(...args)
-				message = results[0]?.messages?.map((x) -> x.message).join('')
-			catch e
-				return assert
+		'has syntax error': ({ results }) ->
+			error = results[0]?.messages?[0]
+			assert.notEqual -1, error?.ruleId.indexOf("coffeescript-error") or -1
 
-			assert.isTrue message.startsWith("Parsing error"), "Expected parser error"
 .export(module)
