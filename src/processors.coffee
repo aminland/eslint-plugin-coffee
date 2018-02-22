@@ -80,13 +80,18 @@ export generic_processor =
 			.map((m) ->
 				if m.nodeType == "coffeelint" or not map?
 					return m
-				start = map.originalPositionFor line:m.line, column:m.column, bias: map.LEAST_UPPER_BOUND
-				end = map.originalPositionFor line:m.endLine, column:m.endColumn, bias: map.GREATEST_LOWER_BOUND
+
+				start = map.originalPositionFor line:m.line, column:m.column, bias: map.GREATEST_LOWER_BOUND
+				end = map.originalPositionFor line:m.endLine, column:m.endColumn, bias: map.LEAST_UPPER_BOUND
 
 				start.column += 1 if start.column != null
 				end.column += 1 if end.column != null
-
-				return {
+				if end.line < start.line
+					end.line = start.line
+					end.column = start.column
+				else if end.line == start.line and end.column < start.column
+					end.column = start.column
+				out = {
 					...m,
 					...{
 						line:start.line,
@@ -95,6 +100,8 @@ export generic_processor =
 						endColumn: end.column
 					}
 				}
+
+				return out
 			)
 			.filter((m) ->
 				if m.line is null or (unfixableRules[m.ruleId] and

@@ -83,19 +83,19 @@ var generic_processor = exports.generic_processor = {
       map = new _sourceMap2.default.SourceMapConsumer(compiled.v3SourceMap);
     }
     output = messages[0].map(function (m) {
-      var end, start;
+      var end, out, start;
       if (m.nodeType === "coffeelint" || map == null) {
         return m;
       }
       start = map.originalPositionFor({
         line: m.line,
         column: m.column,
-        bias: map.LEAST_UPPER_BOUND
+        bias: map.GREATEST_LOWER_BOUND
       });
       end = map.originalPositionFor({
         line: m.endLine,
         column: m.endColumn,
-        bias: map.GREATEST_LOWER_BOUND
+        bias: map.LEAST_UPPER_BOUND
       });
       if (start.column !== null) {
         start.column += 1;
@@ -103,12 +103,19 @@ var generic_processor = exports.generic_processor = {
       if (end.column !== null) {
         end.column += 1;
       }
-      return _extends({}, m, {
+      if (end.line < start.line) {
+        end.line = start.line;
+        end.column = start.column;
+      } else if (end.line === start.line && end.column < start.column) {
+        end.column = start.column;
+      }
+      out = _extends({}, m, {
         line: start.line,
         column: start.column,
         endLine: end.line,
         endColumn: end.column
       });
+      return out;
     }).filter(function (m) {
       if (m.line === null || unfixableRules[m.ruleId] && (typeof unfixableRules[m.ruleId] !== 'function' || unfixableRules[m.ruleId](m))) {
         return false;
