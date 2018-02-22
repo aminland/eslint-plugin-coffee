@@ -17,7 +17,7 @@
     "build": "node_modules/.bin/coffee --bare --no-header -t -o dist src"
   },
   "dependencies": {
-    "@fellow/coffeelint2": "^2.2.2",
+    "@fellow/coffeelint2": "^2.2.3",
     "babel-eslint": "^7.2.3",
     "coffeescript": "^2.1.2",
     "eslint-module-utils": "^2.1.1",
