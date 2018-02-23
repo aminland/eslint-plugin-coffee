@@ -36,6 +36,9 @@ module.exports = {
       value: 150,
       limitComments: false
     }],
+    '@fellow/coffee/prefer-english-operator': ['warn', {
+      ops: ['and', 'or', 'not']
+    }],
     '@fellow/coffee/missing-fat-arrows': ['warn', {
       is_strict: true
     }],

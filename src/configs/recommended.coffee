@@ -6,6 +6,7 @@ module.exports =
         '@fellow/coffee/no-tabs': ['warn', {}]
         '@fellow/coffee/no-spaces': ['off', {}]
         '@fellow/coffee/coffeescript-error': ['error', {}]
+
         '@fellow/coffee/arrow-spacing': ['warn',{}]
         '@fellow/coffee/camel-case-classes': ['warn', {}]
         '@fellow/coffee/duplicate-key': ['error', {}]
@@ -24,6 +25,10 @@ module.exports =
             value: 150,
             limitComments: false
         ]
+        '@fellow/coffee/prefer-english-operator': ['warn', {
+            ops: ['and', 'or', 'not']
+        }]
+
         '@fellow/coffee/missing-fat-arrows': ['warn', is_strict: true ]
         '@fellow/coffee/newlines-after-classes': ['off', value: 2 ]
         '@fellow/coffee/no-debugger': ['warn', console: true ]
