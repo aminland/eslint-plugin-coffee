@@ -26,7 +26,9 @@ $ npm install @fellow/eslint-plugin-coffee --save-dev
 
 
 ## Easy Usage
-Edit your `.eslintrc` file. and add this plugin. The easiest configuration is to just extend the base config provided to get a good set of rules ([see here](src/configs/recommended.coffee)). Note that you can omit the `eslint-plugin-` prefix:
+Edit your `.eslintrc` file. and add this plugin. The easiest configuration is to just extend the base config provided to get a good set of rules ([see here](src/configs/recommended.coffee)). You can omit the `eslint-plugin-` prefix when configuring eslint.
+
+**Note:** If you prefer the use of tabs, make sure to extend <code>@fellow/coffee/**recommended-tabs**</code> instead.
 
 ```yaml
 { 
