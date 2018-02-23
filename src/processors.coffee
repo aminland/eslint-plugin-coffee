@@ -11,7 +11,7 @@ export unfixableRules = arrayToObject [
 	'vars-on-top'
 	'one-var-declaration-per-line'
 	'func-names'
-	'arrow-body-style'
+	'arrow-body-style',
 	'space-before-function-paren'
 	'import/first'
 	'comma-dangle'
@@ -29,6 +29,7 @@ export unfixableRules = arrayToObject [
 	'max-len'
 	'no-nested-ternary'
 	'object-curly-newline'
+	'newline-per-chained-call'
 	'import/no-mutable-exports' # Coffeescript defines everything as var
 	'no-void' # this is used heavily by coffee (? operator)
 	'no-sequences' # this is used heavily by coffee (e.g. storing a nested reference to make property access faster)
