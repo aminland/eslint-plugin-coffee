@@ -47,7 +47,7 @@ var unfixableRules = exports.unfixableRules = (0, _helpers.arrayToObject)(['no-v
 }], ['no-unused-vars', function (m) {
   return m.line === 1 && m.column === 1;
 }], ['no-unused-expressions', function (m) {
-  return m.line === 1 && m.column === 1;
+  return m.line === 1 && m.column === 1; // due to objectWithoutKeys
 }]]);
 
 var generic_processor = exports.generic_processor = {
