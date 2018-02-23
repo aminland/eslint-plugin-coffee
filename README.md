@@ -78,3 +78,24 @@ Then include it in the `rules` section of your `.eslintrc.js`, passing any confi
 
 To learn how to write rules for coffeelint, check their docs.
 
+
+
+
+
+## Editor compatibility
+### VSCode
+For linting to work in VS Code, install the `eslint` extension and add the following to your workspace settings:
+```
+"settings": {
+    ...
+    "files.associations": {
+        "*.cjsx": "coffeescript"
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "coffeescript"
+    ],
+},
+```
+
