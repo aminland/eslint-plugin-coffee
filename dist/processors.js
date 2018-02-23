@@ -33,7 +33,7 @@ var _extends = Object.assign || function (target) {
     indexOf = [].indexOf;
 
 // These are some of the rules you cannot fix due to the way coffeescript compiles.
-var unfixableRules = exports.unfixableRules = (0, _helpers.arrayToObject)(['no-var', 'one-var', 'vars-on-top', 'one-var-declaration-per-line', 'func-names', 'arrow-body-style', 'space-before-function-paren', 'import/first', 'comma-dangle', 'padded-blocks', 'no-extra-semi', 'no-cond-assign', 'quotes', 'no-shadow', 'wrap-iife', 'no-plusplus', 'no-multi-assign', 'no-restricted-syntax', 'object-curly-spacing', 'no-else-return', 'max-len', 'no-nested-ternary', 'object-curly-newline', 'import/no-mutable-exports', // Coffeescript defines everything as var
+var unfixableRules = exports.unfixableRules = (0, _helpers.arrayToObject)(['no-var', 'one-var', 'vars-on-top', 'one-var-declaration-per-line', 'func-names', 'arrow-body-style', 'space-before-function-paren', 'import/first', 'comma-dangle', 'padded-blocks', 'no-extra-semi', 'no-cond-assign', 'quotes', 'no-shadow', 'wrap-iife', 'no-plusplus', 'no-multi-assign', 'no-restricted-syntax', 'object-curly-spacing', 'no-else-return', 'max-len', 'no-nested-ternary', 'object-curly-newline', 'newline-per-chained-call', 'import/no-mutable-exports', // Coffeescript defines everything as var
 'no-void', // this is used heavily by coffee (? operator)
 'no-sequences', // this is used heavily by coffee (e.g. storing a nested reference to make property access faster)
 'prefer-arrow-callback', // this is a style thing, and functions are ALL arrows in coffee
@@ -45,6 +45,8 @@ var unfixableRules = exports.unfixableRules = (0, _helpers.arrayToObject)(['no-v
 }], ['prefer-rest-params', function (m) {
   return m.line === 1 && m.column === 1;
 }], ['no-unused-vars', function (m) {
+  return m.line === 1 && m.column === 1;
+}], ['no-unused-expressions', function (m) {
   return m.line === 1 && m.column === 1;
 }]]);
 

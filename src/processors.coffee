@@ -43,6 +43,7 @@ export unfixableRules = arrayToObject [
 	['no-param-reassign', (m) -> m.line == 1 and m.column == 1 ]
 	['prefer-rest-params', (m) -> m.line == 1 and m.column == 1 ]
 	['no-unused-vars', (m) -> m.line == 1 and m.column == 1 ]
+	['no-unused-expressions', (m) -> m.line == 1 and m.column == 1 ] # due to objectWithoutKeys
 ]
 
 
