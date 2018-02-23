@@ -49,12 +49,13 @@ vows.describe('plugin').addBatch
 				constructor: (@name) -> ''
 
 			export class Child extends Parent
-				constructor: (parent) ==>
+				constructor: (parent) -->
 
 			'''
 
 		'has syntax error': ({ results }) ->
 			error = results[0]?.messages?[0]
+
 			assert.notEqual -1, error?.ruleId.indexOf("coffeescript-error") or -1
 
 .export(module)

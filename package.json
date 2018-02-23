@@ -12,6 +12,7 @@
   ],
   "author": "Amin Mirzaee <github:aminland>",
   "scripts": {
+    "pretest": "npm link && npm link @fellow/eslint-plugin-coffee",
     "test": "npm run build && node ./vowsrunner.js test/test_*.coffee --spec",
     "watch": "node_modules/.bin/coffee --bare --watch --no-header -t -o dist src",
     "build": "node_modules/.bin/coffee --bare --no-header -t -o dist src"
