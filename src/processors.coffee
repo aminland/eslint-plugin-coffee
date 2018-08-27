@@ -1,7 +1,7 @@
 import CoffeeScript from 'coffeescript'
 import SourceMap from 'source-map'
 
-import { arrayToObject, isLiterate } from './helpers'
+import { arrayToObject, isLiterate, asdf } from './helpers'
 import g from './globals'
 
 # These are some of the rules you cannot fix due to the way coffeescript compiles.
@@ -11,6 +11,7 @@ export unfixableRules = arrayToObject [
 	'vars-on-top'
 	'one-var-declaration-per-line'
 	'func-names'
+	'function-paren-newline' # Impossible to affect this give that code is transpiled
 	'arrow-body-style',
 	'space-before-function-paren'
 	'import/first'
@@ -28,6 +29,7 @@ export unfixableRules = arrayToObject [
 	'no-else-return'
 	'max-len'
 	'no-nested-ternary'
+	'no-return-assign'
 	'object-curly-newline'
 	'newline-per-chained-call'
 	'import/no-mutable-exports' # Coffeescript defines everything as var
@@ -92,7 +94,7 @@ export generic_processor =
 					end.line = start.line
 					end.column = start.column
 				else if end.line == start.line and end.column < start.column
-					end.column = start.column
+					end.column = start.column + (m.endColumn - m.column)
 				out = {
 					...m,
 					...{

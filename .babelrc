@@ -1,7 +1,8 @@
 {
 	"plugins": [
 		['babel-plugin-lodash', { 'id': 'lodash'}],
-		['babel-plugin-transform-es2015-modules-commonjs', {
+		["transform-object-rest-spread"],
+		['transform-es2015-modules-commonjs', {
 	      'allowTopLevelThis': true
 	    }]
 	],
