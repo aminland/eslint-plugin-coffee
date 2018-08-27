@@ -93,17 +93,17 @@ var generic_processor = exports.generic_processor = {
       start = map.originalPositionFor({
         line: m.line,
         column: m.column,
-        bias: map.GREATEST_LOWER_BOUND
+        bias: map.LEAST_UPPER_BOUND
       });
       end = map.originalPositionFor({
         line: m.endLine,
         column: m.endColumn,
-        bias: map.LEAST_UPPER_BOUND
+        bias: map.GREATEST_LOWER_BOUND
       });
-      if (start.column !== null) {
+      if (start.column != null) {
         start.column += 1;
       }
-      if (end.column !== null) {
+      if (end.column != null) {
         end.column += 1;
       }
       if (end.line < start.line) {

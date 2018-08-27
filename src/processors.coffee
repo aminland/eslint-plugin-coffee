@@ -1,7 +1,7 @@
 import CoffeeScript from 'coffeescript'
 import SourceMap from 'source-map'
 
-import { arrayToObject, isLiterate, asdf } from './helpers'
+import { arrayToObject, isLiterate } from './helpers'
 import g from './globals'
 
 # These are some of the rules you cannot fix due to the way coffeescript compiles.
@@ -85,11 +85,11 @@ export generic_processor =
 				if m.nodeType == "coffeelint" or not map?
 					return m
 
-				start = map.originalPositionFor line:m.line, column:m.column, bias: map.GREATEST_LOWER_BOUND
-				end = map.originalPositionFor line:m.endLine, column:m.endColumn, bias: map.LEAST_UPPER_BOUND
+				start = map.originalPositionFor line: m.line, column: m.column, bias: map.LEAST_UPPER_BOUND
+				end = map.originalPositionFor line: m.endLine, column: m.endColumn, bias: map.GREATEST_LOWER_BOUND
 
-				start.column += 1 if start.column != null
-				end.column += 1 if end.column != null
+				start.column += 1 if start.column?
+				end.column += 1 if end.column?
 				if end.line < start.line
 					end.line = start.line
 					end.column = start.column
@@ -98,9 +98,9 @@ export generic_processor =
 				out = {
 					...m,
 					...{
-						line:start.line,
+						line: start.line,
 						column: start.column,
-						endLine:end.line,
+						endLine: end.line,
 						endColumn: end.column
 					}
 				}
