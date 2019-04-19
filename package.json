@@ -23,7 +23,7 @@
     "coffeescript": "^2.1.2",
     "eslint-module-utils": "^2.1.1",
     "find-remove": "^1.2.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.11",
     "source-map": "^0.6.1"
   },
   "devDependencies": {
