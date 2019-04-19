@@ -4,7 +4,7 @@ Transpiles coffee files first with coffeescript, then runs eslint checks on them
 
 The plugin ignores some rules that are impossible to satisfy from coffeescript (see [this file](src/processors.coffee#L8))
 
-It additionally runs rules from [coffeelint2](https://www.npmjs.com/package/@fellow/coffeelint2) by creating a fake rule in eslint which wraps and maps the coffeelint2 rules. 
+It additionally runs rules from [coffeelint2](https://www.npmjs.com/package/@fellow/coffeelint2) by creating a fake rule in eslint which wraps and maps the coffeelint2 rules.
 
 **Special thanks** to [Alexander Mextner](https://github.com/a-x-) for getting this started and providing the base code.
 
@@ -31,10 +31,10 @@ Edit your `.eslintrc` file. and add this plugin. The easiest configuration is to
 **Note:** If you prefer the use of tabs, make sure to extend <code>@fellow/coffee/**recommended-tabs**</code> instead.
 
 ```yaml
-{ 
+{
     "extends": ["plugin:@fellow/coffee/recommended"],
     "plugins": [
-      "@fellow/coffee", 
+      "@fellow/coffee",
       # ...
     ]
 }
@@ -46,7 +46,7 @@ For ESLint rules only, add `@fellow/coffee` to the plugins section of your `.esl
 ```yaml
 {
   "plugins": [
-    "@fellow/coffee", 
+    "@fellow/coffee",
       # ...
   ]
 }
@@ -56,13 +56,13 @@ For better compatibility with other plugins (e.g. `eslint-plugins-imports`), I a
 ```yaml
 {
   "parser": "@fellow/eslint-plugin-coffee",
-  "parserOptions": { 
+  "parserOptions": {
     "parser": "babel-eslint", # original parser goes here (you must specify one to use this option).
     "sourceType": "module", # any original parser config options you had.
     "ecmaVersion": 6
   },
   "plugins": [
-    "@fellow/eslint-plugin-coffee", 
+    "@fellow/eslint-plugin-coffee",
     # ...
   ],
   "rules": {
@@ -74,9 +74,9 @@ For better compatibility with other plugins (e.g. `eslint-plugins-imports`), I a
 ```
 
 To see how to add your own coffeelint-style rules, switch your `.eslintrc` -> `.eslintrc.js` and add:
-`require('@fellow/eslint-plugin-coffee').registerCoffeeLintRule('myRuleModule')` at the top. 
+`require('@fellow/eslint-plugin-coffee').registerCoffeeLintRule('myRuleModule')` at the top.
 
-Then include it in the `rules` section of your `.eslintrc.js`, passing any config options your rule might expect. 
+Then include it in the `rules` section of your `.eslintrc.js`, passing any config options your rule might expect.
 
 To learn how to write rules for coffeelint, check their docs.
 
@@ -85,11 +85,29 @@ To learn how to write rules for coffeelint, check their docs.
 
 
 ## Editor compatibility
+### Atom
+For linting to work in Atom, install the `linter-eslint` package and add `source.coffee` and `source.litcoffee` grammar scopes to your config:
+``` coffee
+"*":
+  # ...
+  "linter-eslint":
+    scopes: [
+      "source.js"
+      "source.jsx"
+      "source.js.jsx"
+      "source.flow"
+      "source.babel"
+      "source.js-semantic"
+      "source.coffee"
+      "source.litcoffee"
+    ]
+```
+
 ### VSCode
 For linting to work in VS Code, install the `eslint` extension and add the following to your workspace settings:
-```
+``` js
 "settings": {
-    ...
+    // ...
     "files.associations": {
         "*.cjsx": "coffeescript"
     },
@@ -100,4 +118,3 @@ For linting to work in VS Code, install the `eslint` extension and add the follo
     ],
 },
 ```
-
