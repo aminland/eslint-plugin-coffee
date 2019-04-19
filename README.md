@@ -86,7 +86,7 @@ To learn how to write rules for coffeelint, check their docs.
 
 ## Editor compatibility
 ### Atom
-For linting to work in Atom, install the `linter-eslint` package and add `source.coffee` and `source.litcoffee` grammar scopes to your config:
+For linting to work in Atom, install the `linter-eslint` package and add `source.cjsx`, `source.coffee` and `source.litcoffee` grammar scopes to your config:
 ``` coffee
 "*":
   # ...
@@ -98,6 +98,7 @@ For linting to work in Atom, install the `linter-eslint` package and add `source
       "source.flow"
       "source.babel"
       "source.js-semantic"
+      "source.cjsx"
       "source.coffee"
       "source.litcoffee"
     ]
